@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LibraryInterface"
         xmlns:localClasses="clr-namespace:LibraryInterface.Classes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="900" Closed="Window_Closed">
+        Title="UI для базы данных" Height="450" Width="900" Closed="Window_Closed">
     <DockPanel x:Name="dockPanel">
         <Menu x:Name ="menu" DockPanel.Dock="Top">
             

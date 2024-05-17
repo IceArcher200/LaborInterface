@@ -223,7 +223,7 @@ namespace LibraryInterface
             comboColumn3.ItemsSource = db.Education.ToList();
             comboColumn3.SelectedValueBinding = new Binding("EducationID");
             comboColumn3.SelectedValuePath = "ID";
-            comboColumn3.DisplayMemberPath = "Name";
+            comboColumn3.DisplayMemberPath = "DocumentIndex";
             firstGrid.Columns.Add(comboColumn3);
 
             DataGridComboBoxColumn comboColumn4 = new DataGridComboBoxColumn();
@@ -235,9 +235,14 @@ namespace LibraryInterface
             firstGrid.Columns.Add(comboColumn4);
 
             DataGridTextColumn col11 = new DataGridTextColumn();
-            col11.Header = "Пособие";
-            col11.Binding = new Binding("Payment");
+            col11.Header = "Дом";
+            col11.Binding = new Binding("House");
             firstGrid.Columns.Add(col11);
+
+            DataGridTextColumn col12 = new DataGridTextColumn();
+            col12.Header = "Пособие";
+            col12.Binding = new Binding("Payment");
+            firstGrid.Columns.Add(col12);
 
 
 
@@ -309,11 +314,6 @@ namespace LibraryInterface
             UserInfo info = userInfo.Find(x => x.MenuInfoId == (sender as MyMenuItem)!.Id)!;
             Granting_Rights(info);
 
-            DataGridTextColumn col1 = new DataGridTextColumn();
-            col1.Header = "Название";
-            col1.Binding = new Binding("Name");
-            firstGrid.Columns.Add(col1);
-
             DataGridComboBoxColumn comboColumn2 = new DataGridComboBoxColumn();
             comboColumn2.Header = "Степень";
             comboColumn2.ItemsSource = new List<string>() { "Дошкольное", "Нач. общее", "Основное общее", "Среднее общее", "Среднее профессиональное", "Высшее 1 степени", "Высшее 2 степени", "Высшее 3 степени" };
@@ -365,16 +365,17 @@ namespace LibraryInterface
             comboColumn2.DisplayMemberPath = "Name";
             firstGrid.Columns.Add(comboColumn2);
 
+            DataGridNumericColumn col2 = new DataGridNumericColumn();
+            col2.Header = "Дом";
+            col2.Binding = new Binding("House");
+            firstGrid.Columns.Add(col2);
 
             DataGridNumericColumn col1 = new DataGridNumericColumn();
             col1.Header = "Телефон";
             col1.Binding = new Binding("Phone");
             firstGrid.Columns.Add(col1);
 
-            DataGridNumericColumn col2 = new DataGridNumericColumn();
-            col2.Header = "Дом";
-            col2.Binding = new Binding("House");
-            firstGrid.Columns.Add(col2);
+            
 
 
             firstGrid.ItemsSource = db.Employer.ToList();
@@ -482,6 +483,12 @@ namespace LibraryInterface
             UserInfo info = userInfo.Find(x => x.MenuInfoId == (sender as MyMenuItem)!.Id)!;
             Granting_Rights(info);
 
+            DataGridComboBoxColumn comboColumn1 = new DataGridComboBoxColumn();
+            comboColumn1.Header = "Тип вакансии";
+            comboColumn1.ItemsSource = new List<string>() { "IT", "Финансы и экономика", "Маркетинг", "Торговля", "Инженерия", "Образование и наука", "Медицина", "Логистика", "Строительство", "Юриспруденция" };
+            comboColumn1.SelectedValueBinding = new Binding("Type");
+            firstGrid.Columns.Add(comboColumn1);
+
             DataGridComboBoxColumn comboColumn2 = new DataGridComboBoxColumn();
             comboColumn2.Header = "Должность";
             comboColumn2.ItemsSource = db.Positions.ToList();
@@ -553,8 +560,8 @@ namespace LibraryInterface
                 firstGrid.RowEditEnding -= FirstGrid_SourceUpdated;
                 strangeEvent = false;
             }
-            //UserInfo info = userInfo.Find(x => x.MenuInfoId == (sender as MyMenuItem)!.Id)!;
-            //Granting_Rights(info);
+            UserInfo info = userInfo.Find(x => x.MenuInfoId == (sender as MyMenuItem)!.Id)!;
+            Granting_Rights(info);
 
             DataGridComboBoxColumn comboColumn2 = new DataGridComboBoxColumn();
             comboColumn2.Header = "Логин";
